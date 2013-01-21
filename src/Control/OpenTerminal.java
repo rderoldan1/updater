@@ -16,16 +16,23 @@ import java.util.logging.Logger;
  */
 public class OpenTerminal extends Thread{
      private Object server ;
+     private String user;
+     private String password;
     
-     public void setServer(Object server1){
+     public void setValues(Object server1, String user1, String pass1){
          server = server1;
+         user = user1;
+         password = pass1;
      }
      public void run() {
         try {
             
             System.out.println(server);
-            String cmd = "mstsc /v:" + server;
+            
+            
             Runtime run = Runtime.getRuntime(); 
+            run.exec("cmdkey /generic:"+server+" /user:"+user+" /password:"+password);
+            String cmd = "mstsc /v:" + server;
             Process pr = run.exec(cmd); 
             try { 
                 pr.waitFor();
@@ -37,8 +44,10 @@ public class OpenTerminal extends Thread{
             while ((line=buf.readLine())!=null) { 
                 System.out.println(line); 
             }
+             run.exec("cmdkey /delete:"+server);
         } catch (Exception ex) {
               System.out.println(ex); 
         }
+       
     }
 }

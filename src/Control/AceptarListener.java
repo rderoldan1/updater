@@ -30,13 +30,15 @@ import java.util.logging.Logger;
            System.out.println(servers);
            for(int i = 0; i<servers;i++){
                Object val = m_vista.getTable().getModel().getValueAt(i,0);
+               String user = m_vista.getUser();
+               String password = m_vista.getPassword();
                System.out.println(val);
             
                if(val != null){              
                       
                        m_vista.setRowValue(1, i, "Abriendo");
                        m_OpenTerminal = new OpenTerminal();
-                       m_OpenTerminal.setServer(val);
+                       m_OpenTerminal.setValues(val, user, password);
                        m_OpenTerminal.start();                                     
                }
               

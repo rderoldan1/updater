@@ -24,6 +24,7 @@ public class ControlPrincipal {
         m_vista.addAceptarListener(new AceptarListener(vista));
         m_vista.addFilaListener(new FilaListener());
         m_vista.addPingListener(new PingListener(vista));
+        m_vista.addReiniciarListener(new ReiniciarListener(vista));
     }
     
     
