@@ -4,27 +4,28 @@
  */
 package Control;
 
+import Vista.VistaPrincipal;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author SSrdespinosa
  */
-public class OpenTerminal extends Thread{
-     private Object server ;
+public class PingThread extends Thread {
+    private VistaPrincipal vista;
+    private Object server;
+    private int row;
     
-     public void setServer(Object server1){
-         server = server1;
-     }
-     public void run() {
-        try {
-            
+    public void setValues(VistaPrincipal m_vista, Object m_server, int m_row){
+        vista = m_vista;
+        server = m_server;
+        row = m_row;
+    }
+    public void run(){
+       try {
+        while(true){
             System.out.println(server);
-            String cmd = "mstsc /v:" + server;
+            String cmd = "ping " + server;
             Runtime run = Runtime.getRuntime(); 
             Process pr = run.exec(cmd); 
             try { 
@@ -36,9 +37,13 @@ public class OpenTerminal extends Thread{
             String line = ""; 
             while ((line=buf.readLine())!=null) { 
                 System.out.println(line); 
+                vista.setRowValue(3, row, line);
             }
-        } catch (Exception ex) {
+          } 
+       }catch (Exception ex) {
               System.out.println(ex); 
-        }
+                    
+       }
     }
+    
 }
