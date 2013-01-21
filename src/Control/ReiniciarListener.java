@@ -13,12 +13,15 @@ import java.awt.event.ActionListener;
  * @author SSrdespinosa
  */
 public class ReiniciarListener implements ActionListener{
-     private VistaPrincipal m_vista ;
+    private VistaPrincipal m_vista ;
+    private ReiniciarThread m_reinciar;
     public ReiniciarListener(VistaPrincipal vista){
         m_vista = vista;        
     }
+    @Override
     public void actionPerformed(ActionEvent e){
-         int servers = m_vista.getTable().getRowCount();
+        
+        int servers = m_vista.getTable().getRowCount();
         System.out.println("click");
         System.out.println(servers);
         for(int i = 0; i<servers;i++){
@@ -26,7 +29,11 @@ public class ReiniciarListener implements ActionListener{
             System.out.println(val);
             
             if(val != null){    
-                m_vista.setRowValue(i, i, null);
+                m_reinciar = new ReiniciarThread();
+                m_vista.setRowValue(2, i, "Reiniciando");
+                m_reinciar.setValues(val);
+                //m_reinciar.start();
+                
             }
         }
      }
