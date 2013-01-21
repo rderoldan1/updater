@@ -32,7 +32,7 @@ public class ReiniciarListener implements ActionListener{
                 m_reinciar = new ReiniciarThread();
                 m_vista.setRowValue(2, i, "Reiniciando");
                 m_reinciar.setValues(val);
-                //m_reinciar.start();
+                m_reinciar.start();
                 
             }
         }
