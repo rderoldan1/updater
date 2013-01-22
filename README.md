@@ -24,4 +24,4 @@ maquinas `guindos`
 
   Realize un `fork` del proyecto, haga los cambios y propongalos con un `pull request`
   
-Ruben Espinosa, 2012  
+Ruben Espinosa, 2013  
