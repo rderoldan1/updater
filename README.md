@@ -20,7 +20,7 @@ maquinas `guindos`
   Reportelas en este [link]( https://github.com/rderoldan1/updater/issues)
 
 ### Como usarlo
-  Consulte este [link](https://github.com/rderoldan1/updater/wiki)
+  Consulte este [link](https://github.com/rderoldan1/updater/wiki) (proximamente !!)
   
 ### Desea contribuir?
 
