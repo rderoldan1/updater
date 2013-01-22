@@ -32,7 +32,7 @@ public class OpenTerminal extends Thread{
             
             Runtime run = Runtime.getRuntime(); 
             run.exec("cmdkey /generic:"+server+" /user:"+user+" /password:"+password);
-            String cmd = "mstsc /v:" + server;
+            String cmd = "mstsc /v:" + server+" /admin";
             Process pr = run.exec(cmd); 
             try { 
                 pr.waitFor();

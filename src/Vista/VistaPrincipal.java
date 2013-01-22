@@ -239,7 +239,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 String strLine;
                 int i = 0;
                 while ((strLine = br.readLine()) != null)   {
-                    if(i>3){
+                    if(i > jTable1.getRowCount()-1){
                         addRow();
                     }
                     System.out.println (strLine);
