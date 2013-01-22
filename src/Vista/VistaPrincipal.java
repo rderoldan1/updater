@@ -21,23 +21,17 @@ import javax.swing.table.DefaultTableModel;
  * @author SSrdespinosa
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-
+    int re ;
     /**
      * Creates new form Principal
      */
     public VistaPrincipal() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e){
         }
         initComponents();
+        
     }
 
     /**
@@ -65,7 +59,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jFileChooser1 = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("Vista/Bundle"); // NOI18N
@@ -129,6 +122,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton3.setText(bundle.getString("VistaPrincipal.jButton3.text")); // NOI18N
 
         jButton4.setText(bundle.getString("VistaPrincipal.jButton4.text")); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText(bundle.getString("VistaPrincipal.jLabel2.text")); // NOI18N
 
@@ -203,27 +201,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab(bundle.getString("VistaPrincipal.jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
 
-        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 779, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 419, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab(bundle.getString("VistaPrincipal.jPanel2.TabConstraints.tabTitle"), jPanel2); // NOI18N
@@ -242,27 +228,29 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-       try{
-           String file = jFileChooser1.getSelectedFile().toString();
-           FileInputStream fstream = new FileInputStream(file);
-           DataInputStream in = new DataInputStream(fstream);
-           BufferedReader br = new BufferedReader(new InputStreamReader(in));
-           String strLine;
-           int i = 0;
-           while ((strLine = br.readLine()) != null)   {
-                if(i>3){
-                   addRow();    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+         Chooser j = new Chooser();
+         String file =j.openDialog();
+         try{
+
+                FileInputStream fstream = new FileInputStream(file);
+                DataInputStream in = new DataInputStream(fstream);
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                String strLine;
+                int i = 0;
+                while ((strLine = br.readLine()) != null)   {
+                    if(i>3){
+                        addRow();
+                    }
+                    System.out.println (strLine);
+                    setRowValue(0, i, strLine);
+                    i++;
                 }
-                System.out.println (strLine);
-                setRowValue(0, i, strLine);
-                i++;
-            }
-           in.close();
-       }catch(Exception e){
-           
-       }
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
+               in.close();          
+        }catch(Exception e){
+
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     public void addFilaListener(ActionListener fila){
         jButton2.addActionListener(fila);
@@ -309,7 +297,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
