@@ -12,4 +12,16 @@ tenia la opcion de reiniciar los servidores remotamente. Esto me permitío pasar
 Ahora que entra un nuevo prácticante, hice este nuevo proyecto que simplemente es reescribir ese simple script de ruby
 (50 lineas) a Java (n mil lineas :S ) para hacer que tenga una interface mas amigable y sea mas facil de utilizar para 
 quien no tiene mucho conocimiento en ejecucion de scripts desde consola o simplemente le da pereza instalar ruby en sus
-´guindos´
+maquinas `guindos`
+
+### Mejoras y Errores
+  Reportelas en este [link]( https://github.com/rderoldan1/updater/issues)
+
+### Como usarlo
+  Consulte este [link](https://github.com/rderoldan1/updater/wiki)
+  
+### Desea contribuir?
+
+  Realize un `fork` del proyecto, haga los cambios y propongalos con un `pull request`
+  
+Ruben Espinosa, 2012  
