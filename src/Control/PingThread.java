@@ -15,16 +15,19 @@ public class PingThread extends Thread {
     private VistaPrincipal vista;
     private Object server;
     private int row;
+    private boolean bol;
     
-    public void setValues(VistaPrincipal m_vista, Object m_server, int m_row){
+    public void setValues(VistaPrincipal m_vista, Object m_server, int m_row, boolean m_bol){
         vista = m_vista;
         server = m_server;
         row = m_row;
+        bol = m_bol;
     }
+    
     public void run(){
        try {
-        while(true){
-            System.out.println(server);
+        for(int i = 0; i <= 1000; i++){
+            //System.out.println(server);
             String cmd = "ping " + server+" -n 1";
             Runtime run = Runtime.getRuntime(); 
             Process pr = run.exec(cmd); 
@@ -36,9 +39,10 @@ public class PingThread extends Thread {
             BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream())); 
             String line = ""; 
             while ((line=buf.readLine())!=null) { 
-                System.out.println(line); 
+                
                 vista.setRowValue(3, row, line);
             }
+            System.out.println(i); 
           } 
        }catch (Exception ex) {
               System.out.println(ex); 
