@@ -40,7 +40,7 @@ public class PingThread extends Thread {
             String line = ""; 
             while ((line=buf.readLine())!=null) { 
                 
-                vista.setRowValue(3, row, line);
+                vista.setRowValue(2, row, line);
             }
             System.out.println(i); 
           } 
